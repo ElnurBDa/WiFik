@@ -6,6 +6,11 @@ class WiFik:
         self.interface = ""
         self.access_points, self.stations = [], []
         self.ap = {}
+
+    def change_mac_randomly(self):
+        os.system("sudo ifconfig " + self.interface + " down")
+        os.system("sudo macchanger -r " + self.interface)
+        os.system("sudo ifconfig " + self.interface + " up")
         
     def handle_wifi_interface(self):
         self.interface = input("what interface do you want to use?(if u do not know:press Enter), most probably it is wlan0 and after this script it will change to wlan0mon.\nInterface: ")
@@ -111,7 +116,8 @@ def main():
     while True:
         print("1. Start WiFi Cracking")
         print("2. Choose steps again")
-        print("3. Exit")
+        print("3. Change MAC Address")
+        print("4. Exit")
         choice = input("Choose: ")
         if choice == "1":
             w.handle_wifi_interface()
@@ -128,7 +134,7 @@ def main():
                 print("4. Dump packets")
                 print("5. Deauth APs")
                 print("6. Crack")
-                print("7. Exit")
+                print("7. Back")
                 choice2 = input("Choose: ")
                 if choice2 == "1": w.handle_wifi_interface()
                 if choice2 == "2": w.dump_wifi_aps()
@@ -137,7 +143,10 @@ def main():
                 if choice2 == "5": w.deauth_aps()
                 if choice2 == "6": w.crack()
                 if choice2 == "7": break
-        if choice == "3": 
+        if choice == "3":
+            if not w.interface: w.handle_wifi_interface()
+            w.change_mac_randomly() 
+        if choice == "4": 
             print("Bye!")
             break
 

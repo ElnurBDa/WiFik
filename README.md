@@ -13,6 +13,7 @@ Ensure these are installed before running WiFik:
 ```bash
 sudo apt install xterm
 sudo apt install aircrack-ng
+apt install net-tools # for ifconfig
 ```
 
 ## Installation and Setup
