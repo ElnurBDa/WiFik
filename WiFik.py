@@ -85,8 +85,8 @@ class WiFik:
                 if ap["BSSID"] in station["BSSID"]:
                     num_stations += 1
             print(num_stations)
-        num = 0
-        while not num or num>=l: num = int(input("Number: "))
+        num = ""
+        while num not in list(range(0,l)) : num = int(input("Number: "))
         self.ap = self.access_points[num]
 
     def dump_packet(self):
