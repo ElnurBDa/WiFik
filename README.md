@@ -13,7 +13,8 @@ Ensure these are installed before running WiFik:
 ```bash
 sudo apt install xterm
 sudo apt install aircrack-ng
-apt install net-tools # for ifconfig
+sudo apt install net-tools # for ifconfig
+sudo apt install macchanger 
 ```
 
 ## Installation and Setup
